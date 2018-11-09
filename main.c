@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 
             close(0); dup(fd[0]); close(fd[0]); close(fd[1]);
 
-            execl("/usr/bin/sed", "sed", "s/^[ \t]*//", 0);
+            execl("/usr/bin/sed", "sed", "s/^[ \t]*//", 0); // sed делает нужные преобразования с текстов после того как получен результат от cat
 
             puts("Ошибка при вызове SED \n");
 
@@ -59,7 +59,7 @@ int main(int argc, char **argv)
 
             close(fd[1]); close(fd[0]);
 
-            execl("/bin/cat", "cat", argv[1] ,0);
+            execl("/bin/cat", "cat", argv[1] ,0); // сначала вызываем cat с именем как аргументом
 
             puts("Ошибка при вызове cat\n");
 
